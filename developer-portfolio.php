@@ -101,6 +101,21 @@ function create_taxonomies() {
             )
         )
     );
+
+
+	register_taxonomy(
+        'platform',
+        'projects',
+        array(
+            'hierarchical' => true,
+            'label' => 'Platform',
+            'query_var' => true,
+            'rewrite' => array(
+                'slug' => 'platform',
+                'with_front' => false
+            )
+        )
+    );
 }
 add_action( 'init', 'create_taxonomies');
 
@@ -119,6 +134,8 @@ add_action( 'wp_enqueue_scripts', 'register_portfolio_styles' );
 /** Renders the portfolio tags */
 function render_portfolio_tags()
 {
+	
+
 	echo "<p class='portfolio-tags'>";
 	$languages = get_the_terms($post, 'languages');
 	if (!empty($languages))
@@ -127,8 +144,9 @@ function render_portfolio_tags()
 		foreach ($languages as $language)
 			echo "<span class='portfolio-tag portfolio-tag-language'>$language->name</span> ";
 	}
-
 	echo "</p>";
+
+
 	echo "<p class='portfolio-tags'>";
 	$tools = get_the_terms($post, 'tools');
 	if (!empty($tools))
@@ -138,6 +156,11 @@ function render_portfolio_tags()
 			echo "<span class='portfolio-tag portfolio-tag-tools'>$tool->name</span> ";
 	}
 	echo "</p>";
+
+
+	echo "<hr>";
+
+
 }
 
 

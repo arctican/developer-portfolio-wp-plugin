@@ -70,8 +70,75 @@ function create_custom_post_type() {
 
 	register_post_type( 'projects', $args );
 }
-add_action( 'init', 'create_custom_post_type', 0 );
+add_action( 'init', 'create_custom_post_type' );
 
+
+function create_taxonomies() {
+    register_taxonomy(
+        'languages',
+        'projects',
+        array(
+            'hierarchical' => false,
+            'label' => 'Programming Languages',
+            'query_var' => true,
+            'rewrite' => array(
+                'slug' => 'languages',
+                'with_front' => false
+            )
+        )
+    );
+
+	register_taxonomy(
+        'tools',
+        'projects',
+        array(
+            'hierarchical' => false,
+            'label' => 'Tools & Technologies',
+            'query_var' => true,
+            'rewrite' => array(
+                'slug' => 'tools-technologies',
+                'with_front' => false
+            )
+        )
+    );
+}
+add_action( 'init', 'create_taxonomies');
+
+
+
+function register_portfolio_styles()
+{
+    wp_register_style( 'portfolio-style', plugins_url( 'style.css', __FILE__ ));
+    wp_enqueue_style( 'portfolio-style' );
+}
+add_action( 'wp_enqueue_scripts', 'register_portfolio_styles' );
+
+
+
+
+/** Renders the portfolio tags */
+function render_portfolio_tags()
+{
+	echo "<p class='portfolio-tags'>";
+	$languages = get_the_terms($post, 'languages');
+	if (!empty($languages))
+	{
+		echo "<span class='portfolio-tags-title'>Languages</span><br>";
+		foreach ($languages as $language)
+			echo "<span class='portfolio-tag portfolio-tag-language'>$language->name</span> ";
+	}
+
+	echo "</p>";
+	echo "<p class='portfolio-tags'>";
+	$tools = get_the_terms($post, 'tools');
+	if (!empty($tools))
+	{
+		echo "<span class='portfolio-tags-title'>Technologies</span><br>";
+		foreach ($tools as $tool)
+			echo "<span class='portfolio-tag portfolio-tag-tools'>$tool->name</span> ";
+	}
+	echo "</p>";
+}
 
 
 

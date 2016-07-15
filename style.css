@@ -1,0 +1,33 @@
+
+
+/* The portfolio tag container */
+.portfolio-tags
+{
+	text-align: center;
+}
+
+.portfolio-tags-title
+{
+	text-decoration: underline;
+}
+
+/* The base tag */
+.portfolio-tag
+{
+	background-color: #000;
+	color: white;
+	padding: 5px;
+	line-height: 20px;
+	text-decoration: none;
+}
+
+
+.portfolio-tag-language
+{
+	background-color: #3eace6;
+}
+
+.portfolio-tag-tools
+{
+	background-color: #15b72b;
+}

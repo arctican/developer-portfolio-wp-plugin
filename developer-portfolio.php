@@ -130,35 +130,49 @@ add_action( 'wp_enqueue_scripts', 'register_portfolio_styles' );
 
 
 
+/** Hook into content filter to show the tags */
+function my_the_content_filter($content)
+{
+
+	if (get_post_type() == 'projects' && is_single())
+  		//return $content . "<hr>" . render_portfolio_tags(false);
+  		return render_portfolio_tags(false) . "<hr>" . $content;
+}
+add_filter( 'the_content', 'my_the_content_filter' );
+
+
 
 /** Renders the portfolio tags */
-function render_portfolio_tags()
+function render_portfolio_tags($printTags = true)
 {
-	
+	$tagsContent = "";
 
-	echo "<p class='portfolio-tags'>";
+	$tagsContent .= "<p class='portfolio-tags'>";
 	$languages = get_the_terms($post, 'languages');
 	if (!empty($languages))
 	{
-		echo "<span class='portfolio-tags-title'>Languages</span><br>";
+		$tagsContent .= "<span class='portfolio-tags-title'>Languages</span><br>";
 		foreach ($languages as $language)
-			echo "<span class='portfolio-tag portfolio-tag-language'>$language->name</span> ";
+			$tagsContent .= "<span class='portfolio-tag portfolio-tag-language'>$language->name</span> ";
 	}
-	echo "</p>";
+	$tagsContent .= "</p>";
 
 
-	echo "<p class='portfolio-tags'>";
+	$tagsContent .= "<p class='portfolio-tags'>";
 	$tools = get_the_terms($post, 'tools');
 	if (!empty($tools))
 	{
-		echo "<span class='portfolio-tags-title'>Technologies</span><br>";
+		$tagsContent .= "<span class='portfolio-tags-title'>Technologies</span><br>";
 		foreach ($tools as $tool)
-			echo "<span class='portfolio-tag portfolio-tag-tools'>$tool->name</span> ";
+			$tagsContent .= "<span class='portfolio-tag portfolio-tag-tools'>$tool->name</span> ";
 	}
-	echo "</p>";
+	$tagsContent .= "</p>";
 
+	if ($printTags == true)
+		echo $tagsContent;
+	else
+		return $tagsContent;
 
-	echo "<hr>";
 
 
 }

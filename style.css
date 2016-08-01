@@ -1,5 +1,10 @@
 
-
+.portfolio-tags-container
+{
+	border: 2px dashed lightgrey;
+    border-radius: 10px;
+    padding: 8px;
+}
 /* The portfolio tag container */
 .portfolio-tags
 {
@@ -11,7 +16,8 @@
 
 .portfolio-tags-title
 {
-	text-decoration: underline;
+	font-size: 1.5em;
+    font-weight: lighter
 }
 
 /* The base tag */
@@ -23,9 +29,10 @@
 	padding-right: 9px;
 	line-height: 20px;
 	text-decoration: none;
-	line-height: 30px;
 	font-weight: lighter;
 	display: inline-block;
+	border-radius: 3px;
+	font-size: 0.8em
 }
 
 

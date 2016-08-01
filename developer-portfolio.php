@@ -73,6 +73,8 @@ function create_custom_post_type() {
 add_action( 'init', 'create_custom_post_type' );
 
 
+
+// Register the custom taxonomies: Tools & Languages
 function create_taxonomies() {
     register_taxonomy(
         'languages',
@@ -120,7 +122,7 @@ function create_taxonomies() {
 add_action( 'init', 'create_taxonomies');
 
 
-
+// Add the CSS style to the site
 function register_portfolio_styles()
 {
     wp_register_style( 'portfolio-style', plugins_url( 'style.css', __FILE__ ));
@@ -135,8 +137,9 @@ function my_the_content_filter($content)
 {
 
 	if (get_post_type() == 'projects' && is_single())
-  		//return $content . "<hr>" . render_portfolio_tags(false);
   		return render_portfolio_tags(false) . "<hr>" . $content;
+	else
+		return $content;
 }
 add_filter( 'the_content', 'my_the_content_filter' );
 
@@ -145,28 +148,30 @@ add_filter( 'the_content', 'my_the_content_filter' );
 /** Renders the portfolio tags */
 function render_portfolio_tags($printTags = true)
 {
-	$tagsContent = "";
+
+	$tagsContent = "<div class='portfolio-tags-container'>";
 
 	$tagsContent .= "<p class='portfolio-tags'>";
 	$languages = get_the_terms($post, 'languages');
 	if (!empty($languages))
 	{
-		$tagsContent .= "<span class='portfolio-tags-title'>Languages</span><br>";
+		$tagsContent .= "<span class='portfolio-tags-title'>Languages & Technologies</span><br>";
 		foreach ($languages as $language)
 			$tagsContent .= "<span class='portfolio-tag portfolio-tag-language'>$language->name</span> ";
 	}
-	$tagsContent .= "</p>";
+//	$tagsContent .= "</p>";
 
 
-	$tagsContent .= "<p class='portfolio-tags'>";
+//	$tagsContent .= "<p class='portfolio-tags'>";
 	$tools = get_the_terms($post, 'tools');
 	if (!empty($tools))
 	{
-		$tagsContent .= "<span class='portfolio-tags-title'>Technologies</span><br>";
+		$tagsContent .= "<br>";
+//		$tagsContent .= "<span class='portfolio-tags-title'>Technologies</span><br>";
 		foreach ($tools as $tool)
 			$tagsContent .= "<span class='portfolio-tag portfolio-tag-tools'>$tool->name</span> ";
 	}
-	$tagsContent .= "</p>";
+	$tagsContent .= "</p></div>";
 
 	if ($printTags == true)
 		echo $tagsContent;

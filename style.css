@@ -5,7 +5,7 @@
     border-radius: 10px;
     padding: 8px;
 }
-/* The portfolio tag container */
+/* The portfolio tag container for each tax */
 .portfolio-tags
 {
 	text-align: center;
@@ -35,6 +35,13 @@
 	font-size: 0.8em
 }
 
+.portfolio-tag-platform
+{
+	background-color: #000; /*#e63e3e*/;
+	font-size: 1.5em;
+    line-height: 1.5em;
+	margin-bottom: 0.4em;
+}
 
 .portfolio-tag-language
 {

@@ -17,6 +17,8 @@ You should have received a copy of the GNU General Public License
 along with Developer Portfolio. If not, see http://www.gnu.org/licenses/gpl.html
 */
 
+
+
 // Add the CSS style to the site
 function register_portfolio_styles()
 {
@@ -43,7 +45,7 @@ add_filter( 'the_content', 'my_the_content_filter' );
 /** Renders the portfolio tags */
 function render_portfolio_tags($printTags = true)
 {
-
+	global $post;
 	$tagsContent = "<div class='portfolio-tags-container'>";
 
 	$tagsContent .= "<p class='portfolio-tags'>";
@@ -55,6 +57,11 @@ function render_portfolio_tags($printTags = true)
 			$tagsContent .= "<span class='portfolio-tag portfolio-tag-platform'>$platform->name</span> ";
 	}
 
+	$projectURL = get_post_meta($post->ID, 'ATC_DP_project_URL');
+	if (!empty($projectURL))
+	{
+		$tagsContent .= "<br><a class='portfolio-tag portfolio-tag-projecturl' href='$projectURL[0]'>$projectURL[0]</a>";
+	}
 	// Append the langiages tags
 	$languages = get_the_terms($post, 'languages');
 	if (!empty($languages))
@@ -77,7 +84,8 @@ function render_portfolio_tags($printTags = true)
 		foreach ($tools as $tool)
 			$tagsContent .= "<span class='portfolio-tag portfolio-tag-tools'>$tool->name</span> ";
 	}
-	$tagsContent .= get_post_meta($post, 'ATC_DP_project_URL');
+
+
 
 	$tagsContent .= "</p></div>";
 

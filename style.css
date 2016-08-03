@@ -40,7 +40,7 @@
 	background-color: #000; /*#e63e3e*/;
 	font-size: 1.5em;
     line-height: 1.5em;
-	margin-bottom: 0.4em;
+	/*margin-bottom: 0.4em;*/
 }
 
 .portfolio-tag-language
@@ -51,4 +51,14 @@
 .portfolio-tag-tools
 {
 	background-color: #15b72b;
+}
+
+.portfolio-tag-projecturl
+{
+	background-color: #000000;
+	margin-bottom: 10px;
+}
+.portfolio-tag-projecturl:hover
+{
+	color: #fff;
 }

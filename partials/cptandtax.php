@@ -27,24 +27,24 @@ function atc_dp_create_custom_post_type() {
 
 	// UI labels
 	$labels = array(
-		'name'                => _x( 'Projects', 'Post Type General Name', 'twentythirteen' ),
-		'singular_name'       => _x( 'Project', 'Post Type Singular Name', 'twentythirteen' ),
-		'menu_name'           => __( 'Projects', 'twentythirteen' ),
-		'parent_item_colon'   => __( 'Parent Movie', 'twentythirteen' ),
-		'all_items'           => __( 'All Projects', 'twentythirteen' ),
-		'view_item'           => __( 'View Project', 'twentythirteen' ),
-		'add_new_item'        => __( 'Add New Project', 'twentythirteen' ),
-		'add_new'             => __( 'Add New', 'twentythirteen' ),
-		'edit_item'           => __( 'Edit Project', 'twentythirteen' ),
-		'update_item'         => __( 'Update Project', 'twentythirteen' ),
-		'search_items'        => __( 'Search Projects', 'twentythirteen' ),
-		'not_found'           => __( 'Not Found', 'twentythirteen' ),
-		'not_found_in_trash'  => __( 'Not found in Trash', 'twentythirteen' ),
+		'name'                => __( 'Projects'),
+		'singular_name'       => __( 'Project' ),
+		'menu_name'           => __( 'Projects' ),
+		'parent_item_colon'   => __( 'Parent Movie' ),
+		'all_items'           => __( 'All Projects' ),
+		'view_item'           => __( 'View Project' ),
+		'add_new_item'        => __( 'Add New Project' ),
+		'add_new'             => __( 'Add New' ),
+		'edit_item'           => __( 'Edit Project' ),
+		'update_item'         => __( 'Update Project' ),
+		'search_items'        => __( 'Search Projects' ),
+		'not_found'           => __( 'Not Found' ),
+		'not_found_in_trash'  => __( 'Not found in Trash' ),
 	);
 
 	$args = array(
-		'label'               => __( 'projects', 'twentythirteen' ),
-		'description'         => __( 'Develpoer projects', 'twentythirteen' ),
+		'label'               => __( 'projects' ),
+		'description'         => __( 'Developer projects' ),
 		'labels'              => $labels,
 		'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', 'revisions'
 	),

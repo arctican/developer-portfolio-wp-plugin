@@ -51,6 +51,7 @@ function atc_dp_create_custom_post_type() {
 		//'taxonomies'          => array( 'genres' ),
 		'hierarchical'        => false,
 		'public'              => true,
+		'menu_icon' 		  => 'dashicons-portfolio',
 		'show_ui'             => true,
 		'show_in_menu'        => true,
 		'show_in_nav_menus'   => true,

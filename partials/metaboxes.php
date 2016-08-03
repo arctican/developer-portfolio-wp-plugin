@@ -20,28 +20,28 @@ along with Developer Portfolio. If not, see http://www.gnu.org/licenses/gpl.html
 
 
 /* Display the post meta box. */
-function ATC_developer_portfolio_show_meta_box( $object, $box )
+function atc_dp_show_meta_box( $object, $box )
 {
-	 wp_nonce_field( basename( __FILE__ ), 'ATC_developer_portfolio_nonce' ); ?>
+	 wp_nonce_field( basename( __FILE__ ), 'atc_dp_nonce' ); ?>
 
   	<p>
-    	<label for="ATC_DP_project_URL">Project URL</label>
+    	<label for="atc_dp_project_URL">Project URL</label>
 
 		<br />
 
-		<input class="widefat" type="text" name="ATC_DP_project_URL" id="ATC_DP_project_URL" value="<?php echo esc_attr( get_post_meta( $object->ID, 'ATC_DP_project_URL', true ) ); ?>" size="30" />
+		<input class="widefat" type="text" name="atc_dp_project_URL" id="atc_dp_project_URL" value="<?php echo esc_attr( get_post_meta( $object->ID, 'atc_dp_project_URL', true ) ); ?>" size="30" />
   </p>
 <?php }
 
 /* Create one or more meta boxes to be displayed on the post editor screen. */
-function ATC_add_developer_portfolio_meta_boxes()
+function atc_dp_add_meta_boxes()
 {
 
   add_meta_box(
-    'ATC_developer_portfolio_meta',
+    'atc_dp_meta',
     'Project URL',
-    'ATC_developer_portfolio_show_meta_box',
-    'projects',
+    'atc_dp_show_meta_box',
+    'atc_dp_projects',
     'side',
     'default'
   );
@@ -50,11 +50,11 @@ function ATC_add_developer_portfolio_meta_boxes()
 
 
 /* Save the meta box's post metadata. */
-function ATC_DP_save_metabox( $post_id, $post )
+function atc_dp_save_metabox( $post_id, $post )
 {
 
   /* Verify the nonce before proceeding. */
-  if ( !isset( $_POST['ATC_developer_portfolio_nonce'] ) || !wp_verify_nonce( $_POST['ATC_developer_portfolio_nonce'], basename( __FILE__ ) ) )
+  if ( !isset( $_POST['atc_dp_nonce'] ) || !wp_verify_nonce( $_POST['atc_dp_nonce'], basename( __FILE__ ) ) )
     return $post_id;
 
   /* Get the post type object. */
@@ -65,10 +65,10 @@ function ATC_DP_save_metabox( $post_id, $post )
     return $post_id;
 
   /* Get the posted data and sanitize it as a preoper URL. */
-  $new_meta_value = ( isset( $_POST['ATC_DP_project_URL'] ) ? esc_url( $_POST['ATC_DP_project_URL'] ) : '' );
+  $new_meta_value = ( isset( $_POST['atc_dp_project_URL'] ) ? esc_url( $_POST['atc_dp_project_URL'] ) : '' );
 
   /* Get the meta key. */
-  $meta_key = 'ATC_DP_project_URL';
+  $meta_key = 'atc_dp_project_URL';
 
   /* Get the meta value of the custom field key. */
   $meta_value = get_post_meta( $post_id, $meta_key, true );
@@ -88,17 +88,17 @@ function ATC_DP_save_metabox( $post_id, $post )
 
 
 /* Meta box setup function. */
-function ATC_setup_developer_portfolio_meta_boxes()
+function atc_dp_setup_meta_boxes()
 {
 
   /* Add meta boxes on the 'add_meta_boxes' hook. */
-  add_action( 'add_meta_boxes', 'ATC_add_developer_portfolio_meta_boxes' );
+  add_action( 'add_meta_boxes', 'atc_dp_add_meta_boxes' );
 
   /* Save post meta on the 'save_post' hook. */
- 	add_action( 'save_post', 'ATC_DP_save_metabox', 10, 2 );
+ 	add_action( 'save_post', 'atc_dp_save_metabox', 10, 2 );
 }
 
-add_action( 'load-post.php', 'ATC_setup_developer_portfolio_meta_boxes' );
-add_action( 'load-post-new.php', 'ATC_setup_developer_portfolio_meta_boxes' );
+add_action( 'load-post.php', 'atc_dp_setup_meta_boxes' );
+add_action( 'load-post-new.php', 'atc_dp_setup_meta_boxes' );
 
 ?>

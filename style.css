@@ -1,12 +1,12 @@
 
-.portfolio-tags-container
+.atc_dp_portfolio-tags-container
 {
 	border: 2px dashed lightgrey;
     border-radius: 10px;
     padding: 8px;
 }
 /* The portfolio tag container for each tax */
-.portfolio-tags
+.atc_dp_portfolio-tags
 {
 	text-align: center;
 	margin-bottom: 8px !important;
@@ -14,14 +14,14 @@
 
 }
 
-.portfolio-tags-title
+.atc_dp_portfolio-tags-title
 {
 	font-size: 1.5em;
     font-weight: lighter
 }
 
 /* The base tag */
-.portfolio-tag
+.atc_dp_portfolio-tag
 {
 	background-color: #000;
 	color: white;
@@ -35,7 +35,7 @@
 	font-size: 0.8em
 }
 
-.portfolio-tag-platform
+.atc_dp_portfolio-tag-platform
 {
 	background-color: #000; /*#e63e3e*/;
 	font-size: 1.5em;
@@ -43,22 +43,22 @@
 	/*margin-bottom: 0.4em;*/
 }
 
-.portfolio-tag-language
+.atc_dp_portfolio-tag-language
 {
 	background-color: #3eace6;
 }
 
-.portfolio-tag-tools
+.atc_dp_portfolio-tag-tools
 {
 	background-color: #15b72b;
 }
 
-.portfolio-tag-projecturl
+.atc_dp_portfolio-tag-projecturl
 {
 	background-color: #000000;
 	margin-bottom: 10px;
 }
-.portfolio-tag-projecturl:hover
+.atc_dp_portfolio-tag-projecturl:hover
 {
 	color: #fff;
 }

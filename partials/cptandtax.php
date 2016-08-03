@@ -23,7 +23,7 @@ along with Developer Portfolio. If not, see http://www.gnu.org/licenses/gpl.html
 * Create our custom CPT
 */
 
-function create_custom_post_type() {
+function atc_dp_create_custom_post_type() {
 
 	// UI labels
 	$labels = array(
@@ -64,17 +64,17 @@ function create_custom_post_type() {
 		'rewrite' => array('with_front' => false, 'slug' => 'projects'),
 	);
 
-	register_post_type( 'projects', $args );
+	register_post_type( 'atc_dp_projects', $args );
 }
-add_action( 'init', 'create_custom_post_type' );
+add_action( 'init', 'atc_dp_create_custom_post_type' );
 
 
 
 // Register the custom taxonomies: Tools & Languages and Platforms
-function create_taxonomies() {
+function atc_dp_create_taxonomies() {
     register_taxonomy(
-        'languages',
-        'projects',
+        'atc_dp_languages',
+        'atc_dp_projects',
         array(
             'hierarchical' => false,
             'label' => 'Programming Languages',
@@ -87,8 +87,8 @@ function create_taxonomies() {
     );
 
 	register_taxonomy(
-        'tools',
-        'projects',
+        'atc_dp_tools',
+        'atc_dp_projects',
         array(
             'hierarchical' => false,
             'label' => 'Tools & Technologies',
@@ -102,8 +102,8 @@ function create_taxonomies() {
 
 
 	register_taxonomy(
-        'platforms',
-        'projects',
+        'atc_dp_platforms',
+        'atc_dp_projects',
         array(
             'hierarchical' => true,
             'label' => 'Platforms',
@@ -115,5 +115,5 @@ function create_taxonomies() {
         )
     );
 }
-add_action( 'init', 'create_taxonomies');
+add_action( 'init', 'atc_dp_create_taxonomies');
 ?>

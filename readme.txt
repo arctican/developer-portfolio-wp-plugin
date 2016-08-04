@@ -3,7 +3,7 @@ Contributors: arcticanaudio
 Tags: portfolio, developer
 Requires at least: 4.0
 Tested up to: 4.5.3
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,5 +22,8 @@ This portfolio plugin creates a new custom post type of 'Projects', and has cust
 
 == Changelog ==
 
-= 1.0 =
+= 1.0.1=
+Fixed stable branch number
+
+= 1.0.0 =
 * Initial release

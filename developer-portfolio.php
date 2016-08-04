@@ -3,7 +3,7 @@
 Plugin Name: Developer Portfolio
 Plugin URI:  http:/arcticanaudio.com
 Description: A portfolio plugin designed for developers
-Version:     0.0.1
+Version:     1.0.1
 Author:      Arctican Audio
 Author URI:  http:/arcticanaudio.com
 License:     GPL2

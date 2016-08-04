@@ -1,0 +1,3 @@
+# Ignore the svn_wp folder which is purely used for
+# submitting to the WordPress plugin repository
+/svn_wp
